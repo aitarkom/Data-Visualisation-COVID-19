@@ -11,7 +11,7 @@
 
 ## Introduction
 
-Tous les ans, de jeunes conducteurs sont victimes d'accidents de la route, ce dashboard cherchera à savoir  si la consommation d'alcool des jeunes influe sur ce nombre d'accidents.
+Ce dashboard a pour but de visualiser l'evolution du nombre de cas et du nombre de morts dues a la COVID a travers le monde
 
 ## User's Guide
 
@@ -19,20 +19,16 @@ Afin d'exécuter sans erreur ce code, il faudra installer tous les packages suiv
 
 Liste des librairies/packages utilisés :
 - dash
-- dash_bootstrap_components
 - pandas
 - dash_html_components
 - dash_core_components
 - dash.dependencies
 - plotly.express
-- base64
-- datetime
-- io
-- dash_table
+- json
 
-Il vous ait aussi possible d'installer tous ces packages directement via le requirements.txt en tapant la commande : **$ pip install -r requirements.txt**
+Il est aussi possible d'installer tous ces packages directement via le requirements.txt en tapant la commande : **$ pip install -r requirements.txt**
 
-Une fois les packages installés vous devez lancer l'application avec la commande : **py main.py**
+Une fois les packages installés vous devez lancer l'application avec la commande : **py app.py**
 
 
 
@@ -42,31 +38,18 @@ Ce guide mentionnera l'architecture et les fonctions utiles du projet ainsi que 
 
 #### L'architecture du projet
 
-Le projet se décompose en 4 sous-dossiers qui sont Rapport, apps, data, pycache.<br>
-A la racine du projet, il y a 5 fichiers :
-- app.py (initialise l'application et crée le serveur Dash)
-- data.py (Ce fichier met en forme et traite la data afin de la rendre exploitable)
-- main.py (Ce fichier génère le layout en fonction de l'url, il initialise aussi l'application sur l'adresse  localhost:5000/)
+Le projet se décompose en 1 fichier python et un dossier Rapport.
+A la racine du projet, il y a 2 fichiers :
+- app.py (initialise l'application et crée le serveur Dash. Il met aussi en forme et traite la data afin de la rendre exploitable.)
 - requirements.txt (Liste de toutes les librairies nécessaire au lancements de l'application)
 - README.md
 
-Le dossier **apps** se compose d'un dossier pycache et de 6 fichiers :
-- **__init__.py** (permet de définir le dossier comme packages)
-- app1.py (contient la page 1 du dashboard)
-- app2.py (contient la page 2 du dashboard)
-- app3.py (contient la page 3 du dashboard)
-- erreur.py (contient la page à afficher en cas de mauvais URL)
-- nav.py (contient la barre de navigation présente sur toutes les pages)
-Le dossier **data** est le dossier où se trouve les csv nécessaire à l'application.<br>
 Le dossier **Rapport** comprend les captures d'écrans des différents graphes affichés.<br>
 
 #### Les différentes fonctions présentent dans le projet
 
-Dans le fichier **main.py**<br>
-> La fonction display_page(pathname) prend en parametre une string et renvoie la bonne affichage en fonction de l'url
-
-Dans le fichier **data.py**<br>
-> La fonction recuperationDataAlcool(type) prend en parametre une string et renvoie les informations voulues.<br>
+Dans le fichier **app.py**<br>
+> La fonction delete_no_data_graph() ne prend pas de paramètre et renvoie la liste des pays dont on possède les données pour créer le dashboard.<br>
 Pour la string : <br>
 > - "data" la fonction ouvre le csv et le retourne<br>
 > - "total" la fonction renvoie le nom de la colonne du csv qui selectionne le pourcentage totale (hommes+femmes) du nombre de consommateur d'alcool ainsi que le nom à afficher<br>
@@ -82,27 +65,6 @@ Pour la string : <br>
 > - "MapAccident" la fonction nettoye les données et renvoie les données nécessaire ainsi que le nom de la colonne à sélectionner<br>
 > - "PaysSelect" la fonction retourne la liste des pays possibles<br>
 
-> La fonction recuperationDataTolerance(type) prend en parametre une string et renvoie les informations voulues.<br>
-> Pour la string : <br>
-> - "data" la fonction ouvre le csv et le retourne<br>
-> - "MapTolerance" la fonction retourne le nom de la colonne à selectionner pour la création d'une carte ainsi que le nom à afficher en français<br>
-
-Dans le fichier **nav.py**<br>
-> La fonction NavBar(active) renvoie une barre de navigation à afficher dans chaque page, elle prend en parametre une string correspondant au nom de la page actuelle permettant de changer la couleur du bouton correspondant à la page
-
-Dans le fichier **app1.py**<br>
-> La fonction choropletGraph(scope,data,color,colorFrench,legendColor) retourne une map, elle prend en paramètres le scope(localsiation), data(les données),colorFrench(nom francais),legendColor(Couleur d'affiche des données)<br>
-> La fonction InterMenu(pays_selected) retourne le nom du pays sous la bonne forme pour l'affiche de graphe ou map ainsi que le nom français, elle prend en parametre une string.<br>
-> les fonctions upgrade_map(continent_select) permettent de mettre à jour les cartes en fonction des interactions avec les différents menu déroulant.la carte affiche les continents en fonction des continents choisis dans le menu déroulant.<br>
-
-Dans le fichier **app2.py**<br>
-> La fonction choropletGraph(scope,data,color,colorFrench,legendColor) retourne une map, elle prend en paramètres le scope(localsiation), data(les données),colorFrench(nom francais),legendColor(Couleur d'affiche des données)<br>
-> les fonctions update_graph(scope) permettent de mettre à jour les cartes en fonction des interactions avec les différents menu déroulant.la carte affiche les continents en fonction des continents choisis dans le menu déroulant.<br>
-> La première fonction update_graph(xaxis_column_name) permet de mettre à jour l'histogramme en fonction du pays choisi<br>
-
-Dans le fichier **app3.py**<br>
-> La fonction parse_contents(filename) permet de renvoyer un cvs sous forme de tableau dans un une page Dash, elle prend en parametre le nom du csv. <br>
-> La fonction updtae_output(names) permet de mettre à jour le nom du csv en fonction du nom choisi dans le menu déroulant<br>
 
 #### Pistes de développement
 
