@@ -37,13 +37,10 @@ Ce guide mentionnera l'architecture et les fonctions utiles du projet ainsi que 
 
 #### L'architecture du projet
 
-Le projet se décompose en 1 fichier python et un dossier Rapport.
-A la racine du projet, il y a 2 fichiers :
+Le projet se décompose en 3 fichiers.
 - app.py (initialise l'application et crée le serveur Dash. Il met aussi en forme et traite la data afin de la rendre exploitable.)
 - requirements.txt (Liste de toutes les librairies nécessaire au lancements de l'application)
 - README.md
-
-Le dossier **Rapport** comprend les captures d'écrans des différents graphes affichés.<br>
 
 #### Les différentes fonctions présentent dans le projet
 
