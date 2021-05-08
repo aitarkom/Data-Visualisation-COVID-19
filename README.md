@@ -46,7 +46,7 @@ Le projet se décompose en 3 fichiers.
 
 Dans le fichier **app.py**<br>
 > - La fonction delete_no_data_graph() ne prend pas de paramètre et renvoie la liste des pays dont on possède les données pour créer le dashboard.<br>
-> - La fonction delete_no_data_map() crée un dashboard avec toutes les données nécéssaires a la mise en place de la carte choropleth.<br>
+> - La fonction delete_no_data_map() crée un DataFrame avec toutes les données nécéssaires a la mise en place de la carte choropleth.<br>
 > - La fonction update_graphe_cas(country,cases) prend en argument le pays selectionné et les données choisies. Elle retourne les options choisies ainsi qu'une courbe.
 > - La fonction update_graphe_mort(country,deaths) prend en argument le pays selectionné et les données choisies. Elle retourne les options choisies ainsi qu'une courbe.
 > - La fonction update_map(data_map) prend en argument les données choisies. Elle retourne l'options choisies ainsi qu'une carte choropleth.
